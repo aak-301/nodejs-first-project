@@ -29,7 +29,7 @@ const server = http.createServer((req, res) => {
 
   //OVERVIEW
   if (pathname === "/overview" || pathname === "/") {
-    res.writeHead(200, { "Content-tyep": "text/html" });
+    res.writeHead(200, { "Content-type": "text/html" });
     const cardHtml = dataObject
       .map((el) => replaceTemplate(tempCard, el))
       .join("");
@@ -39,19 +39,19 @@ const server = http.createServer((req, res) => {
   // PRODUCT
   else if (pathname === "/product") {
     const product = dataObject[query.id];
-    res.writeHead(200, { "Content-tyep": "text/html" });
+    res.writeHead(200, { "Content-type": "text/html" });
     const output = replaceTemplate(tempProduct, product);
     res.end(output);
   }
   //API
   else if (pathname === "/api") {
-    res.writeHead(200, { "Content-tyep": "application/json" });
+    res.writeHead(200, { "Content-type": "application/json" });
     res.end(data);
   }
   //NOT FOUND
   else {
     res.writeHead(404, {
-      "Content-tyep": "text/html",
+      "Content-type": "text/html",
       "my-own-header": "hello-world",
     });
     res.end("<h1>This page not found</h1>");
